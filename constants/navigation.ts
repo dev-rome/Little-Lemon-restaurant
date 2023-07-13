@@ -16,8 +16,8 @@ export const links = [
     href: "/reservations",
   },
   {
-    text: "Order Online",
-    href: "/order online",
+    text: "Order",
+    href: "/order",
   },
   {
     text: "Login",
