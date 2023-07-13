@@ -1,10 +1,8 @@
 import Nav from "@/components/layout/Nav";
 import "./globals.css";
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { karla } from "./fonts";
 import Footer from "@/components/layout/Footer";
-
-const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Little Lemon Restaurant",
@@ -25,7 +23,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body className={karla.className}>
         <Nav />
         <main>{children}</main>
         <Footer />
