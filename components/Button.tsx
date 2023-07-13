@@ -2,11 +2,19 @@ import React from "react";
 import classnames from "classnames";
 import { ButtonProps } from "@/types";
 
-const Button = ({ text, className, ...rest }: ButtonProps) => {
-  const buttonClasses = classnames(
-    "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded",
-    className
-  );
+const Button = ({
+  text,
+  className,
+  reserveTable,
+  orderMenu,
+  orderDelivery,
+  ...rest
+}: ButtonProps) => {
+  const buttonClasses = classnames({
+    "text-18 bg-#000 text-white rounded px-6 py-5": reserveTable || orderMenu,
+    "bg-none text-16, text-darkGray": orderDelivery,
+    className,
+  });
 
   return (
     <button className={buttonClasses} {...rest}>
