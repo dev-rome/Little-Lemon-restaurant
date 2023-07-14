@@ -3,6 +3,9 @@ import "./globals.css";
 import type { Metadata } from "next";
 import { karla } from "./fonts";
 
+import Nav from "@/components/layout/Nav";
+import Footer from "@/components/layout/Footer";
+
 export const metadata: Metadata = {
   title: "Little Lemon Restaurant",
   description:
@@ -23,7 +26,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={karla.className}>
+        <Nav />
         <main>{children}</main>
+        {/* <Footer /> */}
       </body>
     </html>
   );
