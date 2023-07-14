@@ -4,9 +4,6 @@ export interface NavLinkProps {
 }
 
 export interface ButtonProps {
-  text: string;
+  children: React.ReactNode;
   className?: string;
-  reserveTable?: boolean;
-  orderMenu?: boolean;
-  orderDelivery?: boolean;
 }
