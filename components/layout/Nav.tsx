@@ -2,10 +2,13 @@
 
 import React, { useState } from "react";
 import Image from "next/image";
-import Logo from "@/public/images/logo.svg";
+
+import NavLinks from "./NavLinks";
+
 import { links } from "@/constants/navigation";
 import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
-import NavLinks from "./NavLinks";
+
+import Logo from "@/public/images/logo.svg";
 
 const Nav = () => {
   const [isOpen, setIsOpen] = useState(false);

@@ -1,8 +1,11 @@
 import React from "react";
 import Image from "next/image";
-import Logo from "@/public/images/logo.svg";
-import { links } from "@/constants/navigation";
+
 import NavLinks from "./NavLinks";
+
+import { links } from "@/constants/navigation";
+
+import Logo from "@/public/images/logo.svg";
 
 const Footer = () => {
   return (
