@@ -1,15 +1,11 @@
 "use client";
-
 import React, { useState } from "react";
 import Image from "next/image";
-
-import NavLinks from "./NavLinks";
-
-import { links } from "@/constants/navigation";
+import Logo from "@/public/images/logo.svg";
 import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
 
-import Logo from "@/public/images/logo.svg";
-
+import NavLinks from "./NavLinks";
+import { links } from "@/constants/navigation";
 import { MobileNavProps } from "@/types";
 
 const MobileNav = ({ isOpen, closeNav }: MobileNavProps) => {
