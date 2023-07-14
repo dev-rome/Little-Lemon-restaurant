@@ -4,8 +4,8 @@ import React, { useState } from "react";
 import Image from "next/image";
 import Logo from "@/public/images/logo.svg";
 import { links } from "@/constants/navigation";
-import NavLinks from "./NavLinks";
 import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
+import NavLinks from "./NavLinks";
 
 const Nav = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -14,12 +14,12 @@ const Nav = () => {
   const closeNav = () => setIsOpen(false);
 
   return (
-    <nav className="max-w-[1280px] mx-auto p-4">
-      <div className="flex justify-between items-center">
+    <nav className="p-4">
+      <div className="flex justify-between lg:justify-evenly items-center">
         <Image
           src={Logo}
           alt="Little Lemon"
-          width={200}
+          width={250}
           className="object-contain"
         />
         <div className="lg:hidden">
