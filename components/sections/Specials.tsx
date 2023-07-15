@@ -4,9 +4,9 @@ import { RiEBike2Fill } from "react-icons/ri";
 
 import { markaziText } from "@/app/fonts";
 import { specialsData } from "@/constants/specials";
-import { CardProps } from "@/types";
+import { SpecialCardProps } from "@/types";
 
-const Card = ({ special }: CardProps) => {
+const SpecialsCard = ({ special }: SpecialCardProps) => {
   const { image, title, price, description } = special;
 
   return (
@@ -39,7 +39,7 @@ const Specials = () => {
       <div className="max-w-[80rem] mx-auto px-4">
         <div className="grid grid-cols-4 md:grid-cols-12">
           <div className="col-span-4 md:col-start-1 md:col-span-12 flex justify-between items-center mb-11">
-            <h2 className="text-40 font-bold">Specials</h2>
+            <h2 className={`text-40 font-bold text-center tracking-wide ${markaziText.className}`}>Specials</h2>
             <button className="text-18 bg-primary-yellow text-black rounded px-6 py-3">
               Online Menu
             </button>
@@ -47,7 +47,7 @@ const Specials = () => {
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {specialsData.map((special) => (
-            <Card key={special.id} special={special} />
+            <SpecialsCard key={special.id} special={special} />
           ))}
         </div>
       </div>
