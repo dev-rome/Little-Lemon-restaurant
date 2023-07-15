@@ -12,7 +12,7 @@ const BookingForm = () => {
     "21:00",
     "22:00",
   ]);
-  const [guests, setGuests] = useState(1);
+  const [guests, setGuests] = useState("");
   const [occasion, setOccasion] = useState("Birthday");
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -30,7 +30,7 @@ const BookingForm = () => {
   };
 
   const handleGuestsChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const selectedGuests = parseInt(e.target.value);
+    const selectedGuests = e.target.value;
     setGuests(selectedGuests);
   };
 
