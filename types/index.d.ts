@@ -1,3 +1,4 @@
+import { TestimonialProps } from './index.d';
 export interface NavLinkProps {
   text: string;
   href: string;
@@ -13,7 +14,7 @@ export interface ButtonProps {
   className?: string;
 }
 
-export interface CardProps {
+export interface SpecialCardProps {
   special: Special;
 }
 
@@ -23,4 +24,16 @@ export interface SpecialProps {
   title: string;
   price: string;
   description: string;
+}
+
+export interface TestimonialCardProps {
+  testimonial: Testimonial;
+}
+
+export interface TestimonialProps {
+  id: string;
+  rating: number;
+  image: string;
+  name: string;
+  comment: string;
 }
