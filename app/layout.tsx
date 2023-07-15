@@ -28,7 +28,7 @@ export default function RootLayout({
       <body className={karla.className}>
         <Nav />
         <main>{children}</main>
-        {/* <Footer /> */}
+        <Footer />
       </body>
     </html>
   );
