@@ -1,4 +1,3 @@
-import { TestimonialProps } from './index.d';
 export interface NavLinkProps {
   text: string;
   href: string;
@@ -36,4 +35,9 @@ export interface TestimonialProps {
   image: string;
   name: string;
   comment: string;
+}
+
+export interface BookingFormProps {
+  availableTimes: string[];
+  setAvailableTimes: React.Dispatch<React.SetStateAction<string[]>>;
 }
