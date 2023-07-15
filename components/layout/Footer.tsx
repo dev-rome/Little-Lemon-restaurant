@@ -19,8 +19,8 @@ const SocialMediaIcons = () => (
   <div className="col-span-1 md:col-span-4">
     <h3 className="text-18 font-bold">Social Media</h3>
     <ul className="flex gap-3 text-18">
-      {socialMediaIcons.map(({ icon: Icon, href }) => (
-        <li key={href}>
+      {socialMediaIcons.map(({ name, icon: Icon, href }) => (
+        <li key={name}>
           <a href={href}>
             <Icon />
           </a>
