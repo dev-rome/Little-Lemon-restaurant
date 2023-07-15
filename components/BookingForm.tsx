@@ -46,6 +46,7 @@ const BookingForm = () => {
         type="date"
         id="res-date"
         className="border border-gray-300 rounded-md p-2"
+        value={date}
         onChange={handleDateChange}
       />
       <label htmlFor="res-time">Choose time</label>
