@@ -36,7 +36,7 @@ const BookingForm = ({ availableTimes, dispatch }: BookingFormProps) => {
   };
 
   return (
-    <form className="max-w-xs mx-auto gap-5 py-24" onSubmit={handleSubmit}>
+    <form className="grid max-w-xs mx-auto gap-5 py-24" onSubmit={handleSubmit}>
       <label htmlFor="res-date">Choose date</label>
       <input
         type="date"
