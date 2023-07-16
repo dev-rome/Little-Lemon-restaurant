@@ -2,41 +2,41 @@
 
 import React, { useState } from "react";
 
-const BookingForm = () => {
-  const [date, setDate] = useState("");
-  const [availableTimes, setAvailableTimes] = useState([
-    "17:00",
-    "18:00",
-    "19:00",
-    "20:00",
-    "21:00",
-    "22:00",
-  ]);
-  const [guests, setGuests] = useState("");
-  const [occasion, setOccasion] = useState("Birthday");
+interface BookingFormProps {
+    availableTimes: string[];
+    dispatch?: (action: { type: string }) => void;
+  }
+
+const BookingForm = ({ availableTimes, dispatch }: BookingFormProps) => {
+  const [selectedDate, setSelectedDate] = useState("");
+  const [selectedTime, setSelectedTime] = useState("");
+  const [numberOfGuests, setNumberOfGuests] = useState(1);
+  const [selectedOccasion, setSelectedOccasion] = useState("Birthday");
+
+  // Available times array
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    // Handle form submission
   };
 
   const handleDateChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const selectedDate = e.target.value;
-    setDate(selectedDate);
+    setSelectedDate(e.target.value);
+    if (dispatch) {
+        dispatch({ type: "SET_TIMES" });
+      }
   };
 
   const handleTimeChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    const selectedTime = e.target.value;
-    setAvailableTimes([...availableTimes, selectedTime]);
+    setSelectedTime(e.target.value);
   };
 
   const handleGuestsChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const selectedGuests = e.target.value;
-    setGuests(selectedGuests);
+    setNumberOfGuests(parseInt(e.target.value));
   };
 
   const handleOccasionChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    const selectedOccasion = e.target.value;
-    setOccasion(selectedOccasion);
+    setSelectedOccasion(e.target.value);
   };
 
   return (
@@ -46,19 +46,24 @@ const BookingForm = () => {
         type="date"
         id="res-date"
         className="border border-gray-300 rounded-md p-2"
-        value={date}
+        value={selectedDate}
         onChange={handleDateChange}
       />
+
       <label htmlFor="res-time">Choose time</label>
       <select
         id="res-time"
         className="border border-gray-300 rounded-md p-2"
+        value={selectedTime}
         onChange={handleTimeChange}
       >
-        {availableTimes.map((time, index) => (
-          <option key={index}>{time}</option>
+        {availableTimes.map((time) => (
+          <option key={time} value={time}>
+            {time}
+          </option>
         ))}
       </select>
+
       <label htmlFor="guests">Number of guests</label>
       <input
         type="number"
@@ -67,19 +72,21 @@ const BookingForm = () => {
         max="10"
         id="guests"
         className="border border-gray-300 rounded-md p-2"
-        value={guests}
+        value={numberOfGuests}
         onChange={handleGuestsChange}
       />
+
       <label htmlFor="occasion">Occasion</label>
       <select
         id="occasion"
         className="border border-gray-300 rounded-md p-2"
-        value={occasion}
+        value={selectedOccasion}
         onChange={handleOccasionChange}
       >
         <option value="Birthday">Birthday</option>
         <option value="Anniversary">Anniversary</option>
       </select>
+
       <input
         type="submit"
         value="Make Your reservation"

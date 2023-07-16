@@ -36,8 +36,3 @@ export interface TestimonialProps {
   name: string;
   comment: string;
 }
-
-export interface BookingFormProps {
-  availableTimes: string[];
-  setAvailableTimes: React.Dispatch<React.SetStateAction<string[]>>;
-}
