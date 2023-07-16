@@ -9,9 +9,11 @@ import Logo from "@/public/images/logo.svg";
 const ContactInfo = () => (
   <div className="col-span-1 md:col-span-4">
     <h3 className="text-18 font-bold">Contact</h3>
-    <p className="text-18">Address</p>
-    <p className="text-18">phone number</p>
-    <p className="text-18">email</p>
+    <address className="text-18">
+      <p>Address</p>
+      <p>Phone number</p>
+      <p>Email</p>
+    </address>
   </div>
 );
 
@@ -21,7 +23,7 @@ const SocialMediaIcons = () => (
     <ul className="flex gap-3 text-18">
       {socialMediaIcons.map(({ name, icon: Icon, href }) => (
         <li key={name}>
-          <a href={href}>
+          <a href={href} aria-label={name}>
             <Icon />
           </a>
         </li>

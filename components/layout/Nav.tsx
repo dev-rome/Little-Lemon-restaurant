@@ -1,4 +1,5 @@
 "use client";
+
 import React, { useState } from "react";
 import Image from "next/image";
 import Logo from "@/public/images/logo.svg";
@@ -7,6 +8,7 @@ import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
 import NavLinks from "./NavLinks";
 import { links } from "@/constants/navigation";
 import { MobileNavProps } from "@/types";
+import Button from "../Button";
 
 const MobileNav = ({ isOpen, closeNav }: MobileNavProps) => {
   return (
@@ -16,10 +18,13 @@ const MobileNav = ({ isOpen, closeNav }: MobileNavProps) => {
       } lg:hidden`}
     >
       <div className="flex justify-end p-4">
-        <AiOutlineClose
+        <Button
           className="text-3xl cursor-pointer"
           onClick={closeNav}
-        />
+          aria-label="Close"
+        >
+          <AiOutlineClose />
+        </Button>
       </div>
       <ul className="flex flex-col gap-4 p-4">
         {links.map(({ text, href }) => (
@@ -45,19 +50,18 @@ const Nav = () => {
           className="object-contain"
         />
         <div className="lg:hidden">
-          {isOpen ? (
-            <AiOutlineClose
-              className="text-3xl cursor-pointer"
-              onClick={toggleNav}
-            />
-          ) : (
-            <AiOutlineMenu
-              className="text-3xl cursor-pointer"
-              onClick={toggleNav}
-            />
-          )}
+          <button
+            className="text-3xl cursor-pointer"
+            onClick={toggleNav}
+            aria-label={isOpen ? "Close" : "Open"}
+          >
+            {isOpen ? <AiOutlineClose /> : <AiOutlineMenu />}
+          </button>
         </div>
-        <ul className={`hidden lg:flex gap-11 ${isOpen ? "lg:hidden" : ""}`}>
+        <ul
+          className={`hidden lg:flex gap-11 ${isOpen ? "lg:hidden" : ""}`}
+          aria-hidden={isOpen}
+        >
           {links.map(({ text, href }) => (
             <NavLinks key={text} text={text} href={href} />
           ))}

@@ -5,6 +5,7 @@ import { RiEBike2Fill } from "react-icons/ri";
 import { markaziText } from "@/app/fonts";
 import { specialsData } from "@/constants/specials";
 import { SpecialCardProps } from "@/types";
+import Button from "../Button";
 
 const SpecialsCard = ({ special }: SpecialCardProps) => {
   const { image, title, price, description } = special;
@@ -24,10 +25,10 @@ const SpecialsCard = ({ special }: SpecialCardProps) => {
         <p className="mb-4">{description}</p>
       </div>
       <div className="p-6 mt-auto">
-        <button className="text-16 font-bold bg-none text-black">
+        <Button className="text-16 font-bold bg-none text-black">
           Order a delivery
           <RiEBike2Fill className="inline-block ml-2" />
-        </button>
+        </Button>
       </div>
     </div>
   );
@@ -39,10 +40,14 @@ const Specials = () => {
       <div className="max-w-[80rem] mx-auto px-4">
         <div className="grid grid-cols-4 md:grid-cols-12">
           <div className="col-span-4 md:col-start-1 md:col-span-12 flex justify-between items-center mb-11">
-            <h2 className={`text-40 font-bold text-center tracking-wide ${markaziText.className}`}>Specials</h2>
-            <button className="text-18 bg-primary-yellow text-black rounded px-6 py-3">
+            <h2
+              className={`text-40 font-bold text-center tracking-wide ${markaziText.className}`}
+            >
+              Specials
+            </h2>
+            <Button className="text-18 bg-primary-yellow text-black rounded px-6 py-3">
               Online Menu
-            </button>
+            </Button>
           </div>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">

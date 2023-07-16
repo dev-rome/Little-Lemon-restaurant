@@ -9,12 +9,12 @@ const TestimonialCard = ({ testimonial }: TestimonialCardProps) => {
   const { id, rating, image, name, comment } = testimonial;
 
   return (
-    <div className="bg-white text-black p-4" key={id}>
+    <div className="bg-white text-black p-4" key={id} role="article">
       <p className="text-14 font-bold mb-5">Rating: {rating}</p>
       <div className="flex items-center gap-5">
         <Image
           src={image}
-          alt="user profile picture"
+          alt="User profile picture"
           width={64}
           height={64}
           className="w-16 h-16 rounded-full object-cover"
@@ -36,9 +36,15 @@ const Testimonials = () => {
           >
             Testimonials
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 place-items-center gap-9">
+          <div
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 place-items-center gap-9"
+            role="list"
+          >
             {testimonialData.map((testimonial) => (
-              <TestimonialCard key={testimonial.id} testimonial={testimonial} />
+              <TestimonialCard
+                key={testimonial.id}
+                testimonial={testimonial}
+              />
             ))}
           </div>
         </div>

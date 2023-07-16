@@ -7,9 +7,8 @@ const Button = ({
   className,
   ...rest
 }: ButtonProps) => {
-
   return (
-    <button className={className} {...rest}>
+    <button className={className} type="button" {...rest}>
       {children}
     </button>
   );

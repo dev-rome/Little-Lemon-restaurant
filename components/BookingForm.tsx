@@ -2,18 +2,14 @@
 
 import React, { useState } from "react";
 
-interface BookingFormProps {
-    availableTimes: string[];
-    dispatch?: (action: { type: string }) => void;
-  }
+import { BookingFormProps } from "@/types";
+import Button from "./Button";
 
 const BookingForm = ({ availableTimes, dispatch }: BookingFormProps) => {
   const [selectedDate, setSelectedDate] = useState("");
   const [selectedTime, setSelectedTime] = useState("");
   const [numberOfGuests, setNumberOfGuests] = useState(1);
   const [selectedOccasion, setSelectedOccasion] = useState("Birthday");
-
-  // Available times array
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -23,8 +19,8 @@ const BookingForm = ({ availableTimes, dispatch }: BookingFormProps) => {
   const handleDateChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSelectedDate(e.target.value);
     if (dispatch) {
-        dispatch({ type: "SET_TIMES" });
-      }
+      dispatch({ type: "SET_TIMES" });
+    }
   };
 
   const handleTimeChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
@@ -40,7 +36,7 @@ const BookingForm = ({ availableTimes, dispatch }: BookingFormProps) => {
   };
 
   return (
-    <form className="grid max-w-xs mx-auto gap-5 py-24" onSubmit={handleSubmit}>
+    <form className="max-w-xs mx-auto gap-5 py-24" onSubmit={handleSubmit}>
       <label htmlFor="res-date">Choose date</label>
       <input
         type="date"
@@ -87,11 +83,12 @@ const BookingForm = ({ availableTimes, dispatch }: BookingFormProps) => {
         <option value="Anniversary">Anniversary</option>
       </select>
 
-      <input
+      <Button
         type="submit"
-        value="Make Your reservation"
         className="bg-primary-darkGreen text-white px-4 py-2 rounded-md cursor-pointer"
-      />
+      >
+        Make Your reservation
+      </Button>
     </form>
   );
 };

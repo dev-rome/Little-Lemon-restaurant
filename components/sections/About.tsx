@@ -11,12 +11,18 @@ const About = () => {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-5">
           <div className="col-span-1 lg:col-start-1 lg:col-span-6 flex flex-col justify-between items-center lg:flex-row gap-5">
             <div className="self-start">
-              <h2 className={`text-40 font-bold`}>Little Lemon</h2>
-              <span className={`text-32 ${markaziText.className}`}>
+              <h2 className={`text-40 font-bold`} aria-label="Restaurant Name">
+                Little Lemon
+              </h2>
+              <span
+                className={`text-32 ${markaziText.className}`}
+                aria-label="Location"
+              >
                 New York
               </span>
               <p
                 className={`lg:max-w-xl text-20 ${karla.className} mb-5 lg:mb-0`}
+                aria-label="Description"
               >
                 Indulge in an extraordinary gastronomic journey at Little Lemon,
                 where culinary brilliance harmonizes with artistic finesse.
@@ -32,7 +38,7 @@ const About = () => {
           <div className="col-span-1 lg:col-start-7 lg:col-span-6 flex items-center">
             <Image
               src={Restaurant}
-              alt="restaurant"
+              alt="Restaurant"
               className="w-full h-auto object-cover"
             />
           </div>
