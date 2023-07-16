@@ -11,6 +11,8 @@ interface MobileNavProps {
 export interface ButtonProps {
   children: React.ReactNode;
   className?: string;
+  type?: "button" | "submit" | "reset";
+  onClick?: () => void;
 }
 
 export interface SpecialCardProps {
@@ -35,4 +37,9 @@ export interface TestimonialProps {
   image: string;
   name: string;
   comment: string;
+}
+
+interface BookingFormProps {
+  availableTimes: string[];
+  dispatch?: (action: { type: string }) => void;
 }
