@@ -4,7 +4,7 @@ import React, { useReducer } from "react";
 import { useRouter } from "next/navigation";
 
 import BookingForm from "@/components/BookingForm";
-import { fetchAPI, submitAPI } from "@/utils/utils";
+import { fetchAPI, submitAPI } from "../../utils/utils";
 
 export const updateTimes = (state: string[], action: any) => {
   switch (action.type) {
