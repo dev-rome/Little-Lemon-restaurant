@@ -10,9 +10,9 @@ const ContactInfo = () => (
   <div className="col-span-1 md:col-span-4">
     <h3 className="text-18 font-bold">Contact</h3>
     <address className="text-18">
-      <p>Address</p>
-      <p>Phone number</p>
-      <p>Email</p>
+      <p>123 lemon ave</p>
+      <p>555-555-5555</p>
+      <p>littlelemon@lemon.com</p>
     </address>
   </div>
 );
