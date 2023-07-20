@@ -1,7 +1,7 @@
 import React from "react";
 import Image from "next/image";
 
-import Restaurant from "@/public/images/restaurant.jpg";
+import Restaurant from "@/images/restaurant.jpg";
 import { markaziText, karla } from "@/app/fonts";
 
 const About = () => {
