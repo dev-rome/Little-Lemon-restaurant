@@ -5,21 +5,20 @@ import React, { useState } from "react";
 import { BookingFormProps } from "@/types";
 import Button from "./Button";
 
-const BookingForm = ({ availableTimes, dispatch }: BookingFormProps) => {
+const BookingForm = ({
+  availableTimes,
+  dispatch,
+  handleSubmit,
+}: BookingFormProps) => {
   const [selectedDate, setSelectedDate] = useState("");
   const [selectedTime, setSelectedTime] = useState("");
   const [numberOfGuests, setNumberOfGuests] = useState(1);
   const [selectedOccasion, setSelectedOccasion] = useState("Birthday");
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    // Handle form submission
-  };
-
   const handleDateChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSelectedDate(e.target.value);
     if (dispatch) {
-      dispatch({ type: "SET_TIMES" });
+      dispatch({ type: "GET DATE", data: new Date(e.target.value) });
     }
   };
 
