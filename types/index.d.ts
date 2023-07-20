@@ -41,5 +41,6 @@ export interface TestimonialProps {
 
 interface BookingFormProps {
   availableTimes: string[];
-  dispatch?: (action: { type: string }) => void;
+  dispatch?: (action: any) => void;
+  handleSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
 }
