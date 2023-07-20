@@ -1,18 +1,42 @@
 "use client";
 
 import React, { useReducer } from "react";
+import { useRouter } from "next/navigation";
 
 import BookingForm from "@/components/BookingForm";
+import { fetchAPI, submitAPI } from "@/utils/utils";
 
-const updateTimes = (state: string[], action: { type: string }) => {
-  return ["17:00", "18:00", "19:00", "20:00", "21:00", "22:00"];
+export const updateTimes = (state: string[], action: any) => {
+  switch (action.type) {
+    case "INITIALIZE":
+      return initializeState();
+    case "GET DATE":
+      return fetchAPI(action.data);
+    default:
+      return state;
+  }
+};
+export const initializeState = (): string[] => {
+  return fetchAPI(new Date());
 };
 
-const BookingPage: React.FC = () => {
-  const initialState: string[] = [];
-  const [availableTimes, dispatch] = useReducer(updateTimes, initialState);
+export default function BookingPage() {
+  const [availableTimes, dispatch] = useReducer(updateTimes, initializeState());
 
-  return <BookingForm availableTimes={availableTimes} dispatch={dispatch} />;
-};
+  const router = useRouter();
 
-export default BookingPage;
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    if (submitAPI(e.target)) {
+      router.push("/confirm-booking");
+    }
+  };
+
+  return (
+    <BookingForm
+      availableTimes={availableTimes}
+      dispatch={dispatch}
+      handleSubmit={handleSubmit}
+    />
+  );
+}
