@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import Image from "next/image";
-import Logo from "@/images/logo.svg";
+import Logo from "../../public/images/Logo.svg";
 import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
 
 import NavLinks from "./NavLinks";

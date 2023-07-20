@@ -4,7 +4,7 @@ import Link from "next/link";
 
 import { karla, markaziText } from "@/app/fonts";
 import Button from "../Button";
-import HeaderImage from "@/images/restauranfood.jpg";
+import HeaderImage from "../../public/images/restauranfood.jpg"
 
 const Header = () => {
   return (
