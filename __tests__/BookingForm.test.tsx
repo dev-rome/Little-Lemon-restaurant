@@ -28,7 +28,7 @@ jest.mock("../utils/utils", () => ({
   }),
 }));
 
-describe("initializeTimes", () => {
+describe("initializeState", () => {
   test("returns the fetched available booking times for the current date", async () => {
     // Set the current date to the date you expect the test to run
     const currentDate = new Date("2023-07-20");
