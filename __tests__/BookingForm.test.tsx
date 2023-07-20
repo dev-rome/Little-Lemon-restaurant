@@ -1,6 +1,8 @@
-import { render, screen } from "@testing-library/react";
+import { render, screen, fireEvent } from "@testing-library/react";
 import "@testing-library/jest-dom/extend-expect";
 import { updateTimes, initializeState } from "../app/booking-page/page";
+import { FormEvent } from "react";
+import BookingForm from "../components/BookingForm";
 
 jest.mock("../utils/utils", () => ({
   fetchAPI: jest.fn(() =>
@@ -70,5 +72,99 @@ describe("updateTimes", () => {
     }-${preSelectedDate.getDate()}`;
 
     expect(newState).toEqual(expectedBookingTimes.get(dateString) || []);
+  });
+});
+
+describe("BookingForm HTML5 Validation", () => {
+  test("Date input should have the required attribute", () => {
+    render(
+      <BookingForm
+        availableTimes={[]}
+        handleSubmit={function (e: FormEvent<HTMLFormElement>): void {
+          throw new Error("Function not implemented.");
+        }}
+      />
+    );
+    const dateInput = screen.getByLabelText("Choose date");
+    expect(dateInput).toHaveAttribute("required");
+  });
+
+  test("Time select should have the required attribute", () => {
+    render(
+      <BookingForm
+        availableTimes={[]}
+        handleSubmit={function (e: FormEvent<HTMLFormElement>): void {
+          throw new Error("Function not implemented.");
+        }}
+      />
+    );
+    const timeSelect = screen.getByLabelText("Choose time");
+    expect(timeSelect).toHaveAttribute("required");
+  });
+
+  test("Number of guests input should have the required, min, and max attributes", () => {
+    render(
+      <BookingForm
+        availableTimes={[]}
+        handleSubmit={function (e: FormEvent<HTMLFormElement>): void {
+          throw new Error("Function not implemented.");
+        }}
+      />
+    );
+    const guestsInput = screen.getByLabelText("Number of guests");
+    expect(guestsInput).toHaveAttribute("required");
+    expect(guestsInput).toHaveAttribute("min", "1");
+    expect(guestsInput).toHaveAttribute("max", "10");
+  });
+
+  test("Occasion select should have the required attribute", () => {
+    render(
+      <BookingForm
+        availableTimes={[]}
+        handleSubmit={function (e: FormEvent<HTMLFormElement>): void {
+          throw new Error("Function not implemented.");
+        }}
+      />
+    );
+    const occasionSelect = screen.getByLabelText("Occasion");
+    expect(occasionSelect).toHaveAttribute("required");
+  });
+});
+
+describe("BookingForm JavaScript Validation", () => {
+  test("Submit button should be disabled when the form is invalid", () => {
+    render(
+      <BookingForm
+        availableTimes={[]}
+        handleSubmit={function (e: FormEvent<HTMLFormElement>): void {
+          throw new Error("Function not implemented.");
+        }}
+      />
+    );
+    const submitButton = screen.getByText("Make Your reservation");
+    expect(submitButton).toBeDisabled();
+  });
+
+  test("Submit button should be enabled when the form is valid", () => {
+    render(
+      <BookingForm
+        availableTimes={["10:00", "11:00", "12:00", "13:00"]}
+        handleSubmit={() => {}}
+      />
+    );
+    const dateInput = screen.getByLabelText("Choose date");
+    const timeSelect = screen.getByLabelText("Choose time");
+    const guestsInput = screen.getByLabelText("Number of guests");
+    const occasionSelect = screen.getByLabelText("Occasion");
+    const submitButton = screen.getByText("Make Your reservation");
+
+    // Simulate user input by changing form values
+    fireEvent.change(dateInput, { target: { value: "2023-07-20" } });
+    fireEvent.change(timeSelect, { target: { value: "10:00" } });
+    fireEvent.change(guestsInput, { target: { value: "5" } });
+    fireEvent.change(occasionSelect, { target: { value: "Birthday" } });
+
+    // Verify that the submit button is enabled
+    expect(submitButton).not.toBeDisabled();
   });
 });
