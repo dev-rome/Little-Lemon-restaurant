@@ -4,7 +4,7 @@ import Image from "next/image";
 import { socialMediaIcons } from "@/constants/socialLinks";
 import NavLinks from "./NavLinks";
 import { links } from "@/constants/navigation";
-import Logo from "@/public/images/logo.svg";
+import Logo from "../public/images/logo.svg";
 
 const ContactInfo = () => (
   <div className="col-span-1 md:col-span-4">
