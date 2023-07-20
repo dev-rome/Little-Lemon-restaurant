@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 import { BookingFormProps } from "@/types";
 import Button from "./Button";
@@ -14,6 +14,16 @@ const BookingForm = ({
   const [selectedTime, setSelectedTime] = useState("");
   const [numberOfGuests, setNumberOfGuests] = useState(1);
   const [selectedOccasion, setSelectedOccasion] = useState("Birthday");
+  const [formIsValid, setFormIsValid] = useState(false);
+
+  useEffect(() => {
+    setFormIsValid(
+      selectedDate !== "" &&
+        selectedTime !== "" &&
+        numberOfGuests >= 1 &&
+        numberOfGuests <= 10
+    );
+  }, [selectedDate, selectedTime, numberOfGuests]);
 
   const handleDateChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSelectedDate(e.target.value);
@@ -43,6 +53,7 @@ const BookingForm = ({
         className="border border-gray-300 rounded-md p-2"
         value={selectedDate}
         onChange={handleDateChange}
+        required
       />
 
       <label htmlFor="res-time">Choose time</label>
@@ -51,6 +62,7 @@ const BookingForm = ({
         className="border border-gray-300 rounded-md p-2"
         value={selectedTime}
         onChange={handleTimeChange}
+        required
       >
         {availableTimes.map((time) => (
           <option key={time} value={time}>
@@ -69,6 +81,7 @@ const BookingForm = ({
         className="border border-gray-300 rounded-md p-2"
         value={numberOfGuests}
         onChange={handleGuestsChange}
+        required
       />
 
       <label htmlFor="occasion">Occasion</label>
@@ -77,6 +90,7 @@ const BookingForm = ({
         className="border border-gray-300 rounded-md p-2"
         value={selectedOccasion}
         onChange={handleOccasionChange}
+        required
       >
         <option value="Birthday">Birthday</option>
         <option value="Anniversary">Anniversary</option>
@@ -84,7 +98,13 @@ const BookingForm = ({
 
       <Button
         type="submit"
-        className="bg-primary-darkGreen text-white px-4 py-2 rounded-md cursor-pointer"
+        className={`px-4 py-2 rounded-md cursor-pointer ${
+          !formIsValid
+            ? "bg-gray-400 text-white"
+            : "bg-primary-darkGreen text-white"
+        }`}
+        disabled={!formIsValid}
+        ariaLabel="Submit form"
       >
         Make Your reservation
       </Button>
