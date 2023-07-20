@@ -6,6 +6,10 @@ import { useRouter } from "next/navigation";
 import BookingForm from "@/components/BookingForm";
 import { fetchAPI, submitAPI } from "../../utils/utils";
 
+export const initializeState = (): string[] => {
+  return fetchAPI(new Date());
+};
+
 export const updateTimes = (state: string[], action: any) => {
   switch (action.type) {
     case "INITIALIZE":
@@ -15,9 +19,6 @@ export const updateTimes = (state: string[], action: any) => {
     default:
       return state;
   }
-};
-export const initializeState = (): string[] => {
-  return fetchAPI(new Date());
 };
 
 export default function BookingPage() {
