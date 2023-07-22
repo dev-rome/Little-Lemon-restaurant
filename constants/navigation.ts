@@ -5,11 +5,11 @@ export const links = [
   },
   {
     text: "About",
-    href: "/about",
+    href: "/",
   },
   {
     text: "Menu",
-    href: "/menu",
+    href: "/",
   },
   {
     text: "Reservations",
@@ -17,10 +17,10 @@ export const links = [
   },
   {
     text: "Order",
-    href: "/order",
+    href: "/",
   },
   {
     text: "Login",
-    href: "/login",
+    href: "/",
   },
 ];
