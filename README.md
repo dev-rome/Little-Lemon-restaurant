@@ -2,7 +2,7 @@
 
 # Little Lemon Restaurant
 
-Final capstone project for Meta Front-end developer program on Coursera, which contains a detailed and responsive website with table-booking functionality built using Next.js. This site is not fully f
+Final capstone project for Meta Front-end developer program on Coursera, which contains a detailed and responsive website with table-booking functionality built using Next.js. This site is not fully functional.
 
 ## Screenshots
 ![little-lemon-landing](/public/images/little-lemon.png)
